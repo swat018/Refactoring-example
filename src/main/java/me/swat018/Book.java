@@ -1,11 +1,13 @@
 package me.swat018;
 
+@MyAnnotation("park")
 public class Book {
 
     private static String B = "BOOK";
 
     private static final String C = "BOOK";
 
+    @MyAnnotation
     private String a = "a";
 
     public String d = "d";
@@ -15,6 +17,7 @@ public class Book {
     public Book() {
     }
 
+    @AnotherAnnotation
     public Book(String a, String d, String e) {
         this.a = a;
         this.d = d;
@@ -24,7 +27,7 @@ public class Book {
     private void f() {
         System.out.println("F");
     }
-
+    @AnotherAnnotation
     public void g() {
         System.out.println("g");
     }

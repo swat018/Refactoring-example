@@ -9,7 +9,7 @@ import java.util.Arrays;
  */
 public class App {
     public static void main( String[] args ) throws ClassNotFoundException {
-        Class<Book> bookClass = Book.class;
+//        Class<Book> bookClass = Book.class;
 
 //        Book book =  new Book();
 //        Class<? extends Book> aClass = book.getClass();
@@ -20,7 +20,7 @@ public class App {
 
 //        Arrays.stream(bookClass.getDeclaredFields()).forEach(System.out::println);
 
-        Book book = new Book();
+//        Book book = new Book();
 //        Arrays.stream(bookClass.getDeclaredFields()).forEach(f -> {
 //            try {
 //                f.setAccessible(true);
@@ -47,9 +47,31 @@ public class App {
 //
 //        });
 
-        Arrays.stream(Book.class.getMethods()).forEach(m -> {
-            int modifiers = m.getModifiers();
+//        Arrays.stream(Book.class.getMethods()).forEach(m -> {
+//            int modifiers = m.getModifiers();
+//        });
+
+//        Arrays.stream(Book.class.getAnnotations()).forEach(System.out::println);
+//
+//        Arrays.stream(MyBook.class.getDeclaredAnnotations()).forEach(System.out::println);
+//
+//        Arrays.stream(Book.class.getDeclaredFields()).forEach(f ->{
+//            Arrays.stream(f.getAnnotations()).forEach(System.out::println);
+//        });
+
+        Arrays.stream(Book.class.getDeclaredFields()).forEach(f ->{
+            Arrays.stream(f.getAnnotations()).forEach(a -> {
+                if (a instanceof MyAnnotation) {
+                    MyAnnotation myAnnotation = (MyAnnotation) a;
+                    System.out.println(myAnnotation.value());
+                    System.out.println(myAnnotation.number());
+                }
+            });
         });
+
+
     }
+
+
 
 }
